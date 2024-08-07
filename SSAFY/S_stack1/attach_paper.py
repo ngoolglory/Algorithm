@@ -1,4 +1,4 @@
-# 스택1_종이_붙이기
+# 스택1_종이_붙이기 (메모이제이션 X)
 import sys
 sys.stdin = open('C:/Users/SSAFY/Downloads/sample_input.txt', 'r')
 
