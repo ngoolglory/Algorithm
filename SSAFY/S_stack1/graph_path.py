@@ -10,7 +10,7 @@ def graph_path(n_node, n_edge):
     for _ in range(n_edge):
         n1, n2 = map(int, input().split())  # 간선 연결된 노드 1, 노드 2
         adj_list[n1].append(n2)             # 방향성 고려 (일방향)
-        #adj_list[n2].append(n1)            # 이 코드를 넣으면 쌍방향이 됨
+        #adj_list[n2].append(n1)            # 이 코드를 넣으면 양방향이 됨
 
     S_node, G_node = map(int, input().split())  # 경로의 존재를 확인할 출발노드, 도착노드
 
