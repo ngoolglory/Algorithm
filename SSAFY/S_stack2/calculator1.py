@@ -1,5 +1,7 @@
+# 계산기 1
 import sys
 sys.stdin = open('C:/Users/SSAFY/Downloads/sample_input.txt', 'r')
+
 
 def Cal1(N, formula):
     isp = {'*':2, '/':2, '+':1, '-':1, '(':0}   # in-stack priority
@@ -61,7 +63,7 @@ def Cal2(formula):
             elif token == '*':
                 cal_result = n1 * n2
             else:
-                cal_result = n1 / n2
+                cal_result = n1 // n2
             # 스택에 연산 결과 push
             top += 1
             stack[top] = cal_result
