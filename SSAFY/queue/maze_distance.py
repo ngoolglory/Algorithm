@@ -4,7 +4,7 @@ sys.stdin = open('C:/Users/SSAFY/Downloads/sample_input.txt', 'r')
 
 from collections import deque
 
-def BFS(S, maze):
+def BFS(S):
     global visited
     queue = deque()             # 큐 생성
     queue.append(S)             # 시작점 enqueue
@@ -41,5 +41,5 @@ for tc in range(1, 1+int(input())):
             if maze[r][c] == 2:
                 S = (r, c)
 
-    answer = BFS(S, maze)
+    answer = BFS(S)
     print(f'#{tc}', answer)
