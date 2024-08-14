@@ -25,4 +25,4 @@ for _ in range(10):
     tc = int(input())   # 테스트케이스 번호
     arr = list(map(int, input().split()))   # 배열
     answer = password_generator(arr)
-    print(f'#{tc}', *answer)  # 최종 암호 배열 출력
+    print(f'#{tc}', *answer) # 최종 암호 배열 출력
