@@ -1,7 +1,7 @@
 # 상호의 배틀필드
 import sys
-#sys.stdin = open('C:/Users/SSAFY/Downloads/sample_input.txt', 'r')
-sys.stdin = open("C:/Users/82108/Downloads/sample_input.txt", "r")
+sys.stdin = open('C:/Users/SSAFY/Downloads/sample_input.txt', 'r')
+#sys.stdin = open("C:/Users/82108/Downloads/sample_input.txt", "r")
 
 '''
 <게임 맵의 구성 요소>
@@ -41,26 +41,30 @@ for tc in range(1, 1+int(input())):
         # U 누름
         if command == 'U':
             arr[cur_r][cur_c] = '^'
-            if arr[cur_r-1][cur_c] == '.':
+            if cur_r-1 >= 0 and arr[cur_r-1][cur_c] == '.':
                 arr[cur_r][cur_c], arr[cur_r-1][cur_c] = arr[cur_r-1][cur_c], arr[cur_r][cur_c]
+                cur_r -= 1
             
         # D 누름
         elif command == 'D':
             arr[cur_r][cur_c] = 'v'
-            if arr[cur_r-1][cur_c] == '.':
-                arr[cur_r][cur_c], arr[cur_r-1][cur_c] = arr[cur_r-1][cur_c], arr[cur_r][cur_c]
+            if cur_r+1 < H and arr[cur_r+1][cur_c] == '.':
+                arr[cur_r][cur_c], arr[cur_r+1][cur_c] = arr[cur_r+1][cur_c], arr[cur_r][cur_c]
+                cur_r += 1
         
         # L 누름
         elif command == 'L':
             arr[cur_r][cur_c] = '<'
-            if arr[cur_r-1][cur_c] == '.':
-                arr[cur_r][cur_c], arr[cur_r-1][cur_c] = arr[cur_r-1][cur_c], arr[cur_r][cur_c]
-        
+            if cur_c-1 >= 0 and arr[cur_r][cur_c-1] == '.':
+                arr[cur_r][cur_c], arr[cur_r][cur_c-1] = arr[cur_r][cur_c-1], arr[cur_r][cur_c]
+                cur_c -= 1
+
         # R 누름
         elif command == 'R':
             arr[cur_r][cur_c] = '>'
-            if arr[cur_r-1][cur_c] == '.':
-                arr[cur_r][cur_c], arr[cur_r-1][cur_c] = arr[cur_r-1][cur_c], arr[cur_r][cur_c]
+            if cur_c+1 < W and arr[cur_r][cur_c+1] == '.':
+                arr[cur_r][cur_c], arr[cur_r][cur_c+1] = arr[cur_r][cur_c+1], arr[cur_r][cur_c]
+                cur_c += 1
         
         # S 누름
         else:
