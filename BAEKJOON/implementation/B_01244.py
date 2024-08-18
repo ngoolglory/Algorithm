@@ -21,8 +21,10 @@ for _ in range(student_N):
                 switch_lst[i] = 1 - switch_lst[i]  # 상태 바꾸기
     # 여자인 경우
     else:
-        center = num - 1                       # 기준 중앙 스위치
-        switch_lst[center] = 1 - switch_lst[center]     # 일단 기준 스위치부터 상태 바꿔
+        # 기준 중앙 스위치 지정 후 상태 바꾸기
+        center = num - 1                           
+        switch_lst[center] = 1 - switch_lst[center]
+        # 기준으로부터 양쪽으로 퍼져나가면서 스위치 체크
         for k in range(1, N//2+1):
             left = center - k                      # 왼쪽 스위치
             right = center + k                     # 오른쪽 스위치
