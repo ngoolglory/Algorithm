@@ -2,6 +2,7 @@
 import sys
 sys.stdin = open('C:/Users/SSAFY/Downloads/sample_input.txt', 'r')
 
+# 스택 사용
 def dfs(node):
     cnt = 0                     # 카운트 초기화
     stack = []                  # 빈 스택 생성
@@ -26,3 +27,26 @@ for tc in range(1, int(input())+1):
     
     answer = dfs(N)
     print(f'#{tc}', answer)
+
+#=======================================================================================
+# 재귀 사용
+def dfs(node):
+    global cnt                  # 함수가 한번 호출될 때마다 카운트를 1 증가시킬거니까 global 변수 선언
+    cnt += 1                    # 함수 호출됐으니 카운트 1 증가
+    for v in adj_l[node]:       # 현재 노드에 인접한 노드들 dfs에 넣고 재귀 호출
+        dfs(v)
+
+for tc in range(1, int(input())+1):
+    E, N = map(int, input().split())            # E: 간선 개수, N: N을 루트로하는 서브트리 구하기 위한 N
+    pc_pair = list(map(int, input().split()))   # 부모 자식 쌍
+    adj_l = [[] for _ in range(E+1+1)]          # 인접 리스트 (간선 개수 + 1 = 노드 개수)
+    
+    # 인접 리스트 채우기
+    for i in range(0, len(pc_pair), 2):               # 2개씩 부모, 자식 쌍 순회
+        parent, child = pc_pair[i], pc_pair[i+1]        # 부모, 자식 쌍
+        if child not in adj_l[parent]:                  # 부모 인접 리스트에 해당 자식이 없으면
+            adj_l[parent].append(child)                 # 인접 리스트에 추가
+    
+    cnt = 0
+    dfs(N)
+    print(f'#{tc}', cnt)
