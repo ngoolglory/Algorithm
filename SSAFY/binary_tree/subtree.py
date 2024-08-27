@@ -1,17 +1,17 @@
-# 트리_이진탐색_확인용
+# 트리_subtree_확인용
 import sys
 sys.stdin = open('C:/Users/SSAFY/Downloads/sample_input.txt', 'r')
 
 def dfs(node):
-    cnt = 0
-    stack = []
-    stack.append(node)
-    while stack:
-        v = stack.pop()
-        cnt += 1
-        for i in adj_l[v]:
+    cnt = 0                     # 카운트 초기화
+    stack = []                  # 빈 스택 생성
+    stack.append(node)          # 시작 루트 노드 stack에 넣고 시작
+    while stack:                # 스택에 아무것도 남지 않을 때까지 반복
+        v = stack.pop()         # 스택 top 원소 pop
+        cnt += 1                # pop할 때마다 카운트 1증가
+        for i in adj_l[v]:      # pop한 노드의 인접 노드 모두 스택에 넣기
             stack.append(i)
-    return cnt
+    return cnt                  # 최종 카운트 반환
 
 for tc in range(1, int(input())+1):
     E, N = map(int, input().split())            # E: 간선 개수, N: N을 루트로하는 서브트리 구하기 위한 N
