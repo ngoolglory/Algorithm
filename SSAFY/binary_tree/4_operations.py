@@ -2,22 +2,19 @@
 import sys
 sys.stdin = open('C:/Users/SSAFY/Downloads/sample_input.txt', 'r')
 
-def calculator(v):
-    global tree
-    if tree[v] not in ['+','-','*','/']:
+def DFS(v):
+    if tree[v] not in list('+-*/'):
         return tree[v]
+    left_v = DFS(left[v])
+    right_v = DFS(right[v])
+    if tree[v] == '+':
+        return left_v + right_v
+    elif tree[v] == '-':
+        return left_v - right_v
+    elif tree[v] == '*':
+        return left_v * right_v
     else:
-        left_v = calculator(left[v])
-        right_v = calculator(right[v])
-        if tree[v] == '+':
-            tree[v] = left_v + right_v
-        elif tree[v] == '-':
-            tree[v] = left_v - right_v
-        elif tree[v] == '*':
-            tree[v] = left_v * right_v
-        else:
-            tree[v] = left_v / right_v
-        return tree[v]
+        return left_v / right_v
 
 
 for tc in range(1, 11):
@@ -27,16 +24,13 @@ for tc in range(1, 11):
     tree = [0] * (N+1)      # 노드에 들어가 있는 값
 
     for _ in range(N):
-        node, value, *children = list(input().split())
+        node, value, *children = input().split()
         node, children = int(node), list(map(int, children))
-        if value not in ['+','-','*','/']:
-            tree[node] = int(value)
-        else:
-            tree[node] = value
         if children:
             left[node] = children[0]
             if len(children) == 2:
-                right[node] = children[1]
-
-    calculator(1)
-    print(f'#{tc}', int(tree[1]))
+                right[node]= children[1]
+        else:
+            value = int(value)
+        tree[node] = value
+    print(f'#{tc}', int(DFS(1)))
