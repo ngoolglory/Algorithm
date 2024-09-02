@@ -74,7 +74,7 @@ for tc in range(1, 1+int(input())):
                     code = ''                               # 암호 코드 초기화
                 # 암호 길이가 8에 도달하지 못했으면
                 else:
-                    if cnt % 2 == 1:                  # 홀수 합 모아주기
+                    if cnt % 2 == 1:                        # 홀수 합 모아주기
                         odd += num
                     else:                                   # 짝수 합 모아주기
                         even += num
