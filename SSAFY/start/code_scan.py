@@ -54,7 +54,7 @@ for tc in range(1, 1+int(input())):
                 part2 += 1
             elif ch == '1' and part2 > 0:
                 part3 += 1
-            # 코드 다 받았으면
+            # part 1,2,3 크기 다 채웠으면
             elif part3 > 0:
                 cnt += 1                                    # 암호 한자리 들어옴
                 # 무조건 part 1,2,3 비율 중에 1이 있기 때문에 최소값이 비율 1일 것임 (전체를 그걸로 나눠주면 됨)
