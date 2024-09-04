@@ -2,7 +2,7 @@
 import sys
 sys.stdin = open('C:/Users/SSAFY/Downloads/sample_input.txt', 'r')
 
-def backtrack(cnt, pos, arr):
+def backtrack(cnt, pos):
     global max_prize
 
     current_state = (cnt, ''.join(arr))                     # (현재 카운트, 배열 상태) 쌍을 저장
@@ -17,7 +17,7 @@ def backtrack(cnt, pos, arr):
     for i in range(pos, len(arr)):                          # pos부터 len(arr)-1까지 순회
         for j in range(i + 1, len(arr)):                    # i + 1부터 len(arr)-1까지 순회
             arr[i], arr[j] = arr[j], arr[i]                 # 스왑하기
-            backtrack(cnt + 1, i, arr)                      # 다음 교환 시도
+            backtrack(cnt + 1, i)                      # 다음 교환 시도
             arr[i], arr[j] = arr[j], arr[i]                 # 다시 스왑해서 원상태로 복구
 
 
@@ -27,5 +27,5 @@ for tc in range(1, 1+int(input())):
     memo = set()                                            # 메모이제이션을 위한 set
     max_prize = 0                                           # 최대 상금
 
-    backtrack(0, 0, arr)
+    backtrack(0, 0)
     print(f'#{tc}', max_prize)
