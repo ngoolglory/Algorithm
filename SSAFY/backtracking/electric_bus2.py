@@ -1,4 +1,4 @@
-# 백트래킹_최소 생산 비용
+# 백트래킹_전기버스2
 import sys
 sys.stdin = open('C:/Users/SSAFY/Downloads/sample_input.txt', 'r')
 #sys.stdin = open("C:/Users/82108/Downloads/sample_input.txt", "r")
