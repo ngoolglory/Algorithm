@@ -21,11 +21,6 @@ def dfs(month, sum_cost):
     # 3달권 구매 (다음 재귀: 3달 후를 확인)
     dfs(month + 3, sum_cost + cost[2])
 
-    # 1년권 구매 (다음 재귀: 12달 후를 확인)
-    # [참고] 사실 재귀에서 빼고 1월에 구입한 비용이랑 비교해도 됨
-    # 직관적으로 보기 위해 강의용으로 추가
-    dfs(month + 12, sum_cost + cost[3])
-
 
 for tc in range(1, 1+int(input())):
     cost = list(map(int, input().split()))
@@ -33,7 +28,7 @@ for tc in range(1, 1+int(input())):
     days = [0] + list(map(int, input().split()))
     ans = 1e9
     dfs(1, 0)
-    print(f'#{tc}', ans)
+    print(f'#{tc}', min(ans, cost[3]))
 
 #===================================================================
 
