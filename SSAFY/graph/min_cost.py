@@ -24,7 +24,7 @@ def BFS(r, c):
                     queue.append((nr, nc))
 
 
-# DFS로 풀기 (틀림)
+# DFS로 풀기 (시간 초과)
 def DFS(r, c):
     if D[r][c] > D[N-1][N-1]: return
     for k in range(4):
@@ -65,7 +65,9 @@ def Dijkstra(r, c):
 for tc in range(1, 1 + int(input())):
     N = int(input())
     arr = [list(map(int, input().split())) for _ in range(N)]
-    dr, dc = [0, 0, 1, -1], [1, -1, 0, 0]
+    #dr, dc = [0, 0, 1, -1], [1, -1, 0, 0]
+    # 우하좌상
+    dr, dc = [0, 1, 0, -1], [1, 0, -1, 0]
 
     # D[v]: 출발점(s)에서 v까지 최단 경로의 가중치 합을 저장
     # 모든 정점에 대해 초기값은 아주 큰 값으로 설정 => 아직 어떤 경로도 발견하지 못함
