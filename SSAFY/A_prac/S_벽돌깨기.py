@@ -22,7 +22,7 @@ def shoot(level, remains, now_arr):
     global min_blocks
     
     # 기저조건
-    # 구슬을 모두 발산 or 남은 벽돌이 0이면 종료
+    # 모든 구슬 발사 완료 or 남은 벽돌이 0이면 종료
     if level == N or remains == 0:
         min_blocks = min(min_blocks, remains)       # 최소값 갱신
         return
